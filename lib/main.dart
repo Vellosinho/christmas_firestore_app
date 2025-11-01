@@ -1,12 +1,23 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cloudflare_test/controller/windows_process_controller.dart';
+import 'package:cloudflare_test/firebase_options.dart';
+import 'package:cloudflare_test/games/beer_game/beer_game_desktop.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:process_run/process_run.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (_) => WindowsProcessController()),
+    ],
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +48,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String Uri = '';
+  String uri = '';
 
   @override
   void initState() {
@@ -48,42 +59,45 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> initConnections() async {
-    await _initChromeServer();
+    await _initChromeClient();
   }
 
   Future<void> generateCloudflareSession() async {
-    var shell = Shell();
-    // await shell.run('cloudflared tunnel --url http://localhost:$port/');
-  }
-
-  Future<void> _initChromeServer() async {
-    var process = await Process.start('flutter', ["run", "-d", "chrome"],
-        runInShell: true);
-    // process.stdin.write('flutter run -d chrome');
-    // process.stdout.listen((event) {
-    //   print(">>>> $event");
+    StreamSink<List<int>>? stdoutInstance;
+    var shell = Shell(stdout: stdoutInstance);
+    var result = shell.run('cloudflared tunnel --url http://localhost:8080/');
+    // // print(">>>>>>>>> ${result}");
+    // result.listen((element) {
+    //   print(">>>element");
     // });
-    process.stdout.forEach(print);
-    process.stdout.transform(utf8.decoder).forEach((element) async {
-      print(element);
-      if (element.contains("A Dart VM Service on Chrome is available at:")) {
-        String port = element.split("//").last.split("/").first.split(":").last;
-        if (port != '') {
-          // await generateCloudflareSession();
-          process.stdin.writeln("Uri.base");
-        }
-      }
-      // if (element.contains())
-    });
-    // var result = await shell.run('flutter run -d chrome');
-    // print(">>>> $result");
-    // dynamic result = await Process.run('cloudflared', ['tunnel', '--url', 'http://localhost:53426/']);
-    // print(">>>> $result");y
+    // var process = await Process.run('cloudflared', ["--version"]);
+    // process.stdout.listen((element) async {
+    //   String decoded = utf8.decode(element);
+    //   print("stream2: $decoded");
+    //   if (decoded.contains("A Dart VM Service on Chrome is available at:")) {
+    //     await generateCloudflareSession();
+    //   }
+      
+    // });
+    // stdout.addStream(cloudflaredProcess.stdout);
+
   }
 
+  Future<void> _initChromeClient() async {
+    var process = await Process.start('flutter', ["run", "-d", "chrome", "--web-port", "8080"],
+      runInShell: true);
+
+    process.stdout.listen((element) async {
+      String decoded = utf8.decode(element);
+      print("stream1: $decoded");
+      if (decoded.contains("A Dart VM Service on Chrome is available at:")) {
+        await generateCloudflareSession();
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return kIsWeb ? BeerGameDesktop() : Scaffold(
       backgroundColor: !kIsWeb
           ? Platform.isWindows
               ? Colors.black

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344895159679",
+    "project_id": "beergame-a4b61",
+    "storage_bucket": "beergame-a4b61.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344895159679:android:4cde43ef7cb3773db06e4a",
+        "android_client_info": {
+          "package_name": "com.example.cloudflare_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4xFZKkKWBJgz5tpbYO-pIuoTJxp0KPdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
