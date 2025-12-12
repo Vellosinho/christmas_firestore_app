@@ -1,0 +1,10 @@
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/CMakeFiles/INSTALL.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/CMakeFiles/ALL_BUILD.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/CMakeFiles/ZERO_CHECK.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_app.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/flutter/CMakeFiles/flutter_assemble.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/flutter/CMakeFiles/INSTALL.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/runner/CMakeFiles/cloudflare_test.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/runner/CMakeFiles/INSTALL.dir
+E:/projects/test_apps/christmas_firestore_app/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir

@@ -1,0 +1,10 @@
+^E:\PROJECTS\TEST_APPS\CHRISTMAS_FIRESTORE_APP\BUILD\WINDOWS\X64\CMAKEFILES\EDD23F76673497402BA0A55EFB77E84B\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
