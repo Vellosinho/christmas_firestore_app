@@ -45,9 +45,10 @@ class DefaultFirebaseOptions {
     appId: '1:344895159679:web:f874b4ad2cf35e5db06e4a',
     messagingSenderId: '344895159679',
     projectId: 'beergame-a4b61',
+    databaseURL: 'https://beergame-a4b61-default-rtdb.firebaseio.com/',
     authDomain: 'beergame-a4b61.firebaseapp.com',
-    storageBucket: 'beergame-a4b61.firebasestorage.app',
     measurementId: 'G-QV0NF0KPF1',
+    storageBucket: 'beergame-a4b61.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -55,6 +56,7 @@ class DefaultFirebaseOptions {
     appId: '1:344895159679:android:4cde43ef7cb3773db06e4a',
     messagingSenderId: '344895159679',
     projectId: 'beergame-a4b61',
+    databaseURL: 'https://beergame-a4b61-default-rtdb.firebaseio.com/',
     storageBucket: 'beergame-a4b61.firebasestorage.app',
   );
 
@@ -63,6 +65,7 @@ class DefaultFirebaseOptions {
     appId: '1:344895159679:ios:e9fd23e3da648cb4b06e4a',
     messagingSenderId: '344895159679',
     projectId: 'beergame-a4b61',
+    databaseURL: 'https://beergame-a4b61-default-rtdb.firebaseio.com/',
     storageBucket: 'beergame-a4b61.firebasestorage.app',
     iosBundleId: 'com.example.cloudflareTest',
   );
@@ -72,6 +75,7 @@ class DefaultFirebaseOptions {
     appId: '1:344895159679:ios:e9fd23e3da648cb4b06e4a',
     messagingSenderId: '344895159679',
     projectId: 'beergame-a4b61',
+    databaseURL: 'https://beergame-a4b61-default-rtdb.firebaseio.com/',
     storageBucket: 'beergame-a4b61.firebasestorage.app',
     iosBundleId: 'com.example.cloudflareTest',
   );
@@ -81,6 +85,7 @@ class DefaultFirebaseOptions {
     appId: '1:344895159679:web:f7bd3c130bbee595b06e4a',
     messagingSenderId: '344895159679',
     projectId: 'beergame-a4b61',
+    databaseURL: 'https://beergame-a4b61-default-rtdb.firebaseio.com/',
     authDomain: 'beergame-a4b61.firebaseapp.com',
     storageBucket: 'beergame-a4b61.firebasestorage.app',
     measurementId: 'G-7MTT04MXL8',

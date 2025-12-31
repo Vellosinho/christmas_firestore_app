@@ -1,6 +1,6 @@
 {
-    "name": "cloudflare_test",
-    "short_name": "cloudflare_test",
+    "name": "christmas_firestore_app",
+    "short_name": "christmas_firestore_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

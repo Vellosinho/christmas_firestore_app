@@ -1,1 +1,0 @@
- E:\\projects\\test_apps\\christmas_firestore_app\\.dart_tool\\flutter_build\\efd92b3707b3f333b8456f4654eba913\\native_assets.yaml: 

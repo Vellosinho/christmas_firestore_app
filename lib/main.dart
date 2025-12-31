@@ -2,9 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cloudflare_test/controller/windows_process_controller.dart';
-import 'package:cloudflare_test/firebase_options.dart';
-import 'package:cloudflare_test/games/beer_game/beer_game_desktop.dart';
+import 'package:christmas_firestore_app/firebase_options.dart';
+import 'package:christmas_firestore_app/controller/windows_process_controller.dart';
+import 'package:christmas_firestore_app/games/beer_game/beer_game.dart';
+import 'package:christmas_firestore_app/games/beer_game/game_base/game_base_controller.dart';
+import 'package:christmas_firestore_app/games/beer_game/game_base/round_info/round_info.dart';
+import 'package:christmas_firestore_app/games/beer_game/game_client/admin/select_answer/select_answer_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +18,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
-    providers: [ChangeNotifierProvider(create: (_) => WindowsProcessController()),
+    providers: [
+      ChangeNotifierProvider(create: (_) => WindowsProcessController()),
+      ChangeNotifierProvider(create: (_) => GameBaseController()),
+      ChangeNotifierProvider(create: (_) => SelectAnswerController()),
     ],
     child: const MyApp()));
 }
@@ -33,6 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: RoundPage(roundNumber: 1),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -58,6 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
+  Future<void> initGetLocalSession() async {
+    await context.read<SelectAnswerController>().getSessionLocally();
+  }
+  
   Future<void> initConnections() async {
     await _initChromeClient();
   }

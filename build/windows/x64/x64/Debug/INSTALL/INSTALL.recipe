@@ -2,19 +2,25 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\projects\test_apps\christmas_firestore_app\build\windows\x64\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\projects\test_apps\christmas_firestore_app\build\windows\x64\flutter\x64\Debug\flutter_assemble</FullPath>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\flutter\x64\Debug\flutter_assemble</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\projects\test_apps\christmas_firestore_app\build\windows\x64\runner\Debug\cloudflare_test.exe</FullPath>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\plugins\screen_retriever_windows\Debug\screen_retriever_windows_plugin.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\projects\test_apps\christmas_firestore_app\build\windows\x64\x64\Debug\ALL_BUILD</FullPath>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\plugins\window_manager\Debug\window_manager_plugin.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\projects\test_apps\christmas_firestore_app\build\windows\x64\x64\Debug\INSTALL</FullPath>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\runner\Debug\christmas_firestore_app.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\x64\Debug\ALL_BUILD</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Projetos\christmas_firestore_app\build\windows\x64\x64\Debug\INSTALL</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
