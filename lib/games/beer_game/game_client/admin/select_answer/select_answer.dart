@@ -34,7 +34,7 @@ class _RoundPageSelectAnswerState extends State<RoundPageSelectAnswer> {
 
         controller.setAfterTimerFunction(
           () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: map['roundnum'], playerName: widget.playerName,)));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: map['roundnum'], playerName: widget.playerName,)));
           }
         );
         controller.startTimerToNextRound();
@@ -44,7 +44,7 @@ class _RoundPageSelectAnswerState extends State<RoundPageSelectAnswer> {
 
           controller.setAfterTimerFunction(
             () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => GameOverPage(playerName: widget.playerName,)));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => GameOverPage(playerName: widget.playerName,)));
             }
           );
           controller.startTimerToNextRound();
@@ -101,15 +101,15 @@ class _RoundPageSelectAnswerState extends State<RoundPageSelectAnswer> {
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: (!controller.answeredToRound || isNem) && (controller.selectedAnswer != "") ? ColorPalette.buttonBackgroundColor : ColorPalette.creditCardGray,
+                                backgroundColor: ((controller.lastRoundVoted < widget.roundNumber) || isNem) && (controller.selectedAnswer != "") ? ColorPalette.buttonBackgroundColor : ColorPalette.creditCardGray,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))
                               ),
-                              child: Text((controller.answeredToRound && isNem) ? 'Proxima rodada' :'Enviar Resposta', style: TextStyles.phoneButtonText),
+                              child: Text(((controller.lastRoundVoted == widget.roundNumber) && isNem) ? 'Proxima rodada' :'Enviar Resposta', style: TextStyles.phoneButtonText),
                               onPressed: () {
                                 if ((controller.selectedAnswer != "")) {
-                                  if (!controller.answeredToRound && (controller.selectedAnswer != "")) {
+                                  if ((controller.lastRoundVoted < widget.roundNumber) && (controller.selectedAnswer != "")) {
                                       MessagingRepository().setAnswer(widget.playerName, controller.selectedAnswer, widget.roundNumber);
-                                      controller.setAnsweredToRound();
+                                      controller.setAnsweredToRound(widget.roundNumber);
                                   } else {
                                     if (isNem) {
                                       MessagingRepository().addEvent("Jump_to_page", widget.roundNumber + 1);
@@ -125,12 +125,12 @@ class _RoundPageSelectAnswerState extends State<RoundPageSelectAnswer> {
                     SizedBox(height: MediaQuery.of(context).size.height / 20),
                     Column(
                       children: [
-                        Text(controller.answeredToRound ? 'Resposta Enviada' : 'Insira a resposta certa', style: TextStyles.phoneCommonText,),
+                        Text((controller.lastRoundVoted == widget.roundNumber) ? 'Resposta Enviada' : 'Insira a resposta certa', style: TextStyles.phoneCommonText,),
                         SizedBox(height: 24),
                       ],
                     ),
                     SizedBox(
-                      child: controller.answeredToRound ? SizedBox() :FirebaseAnimatedList(
+                      child: (controller.lastRoundVoted == widget.roundNumber) ? SizedBox() :FirebaseAnimatedList(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         query: MessagingRepository().databaseOptionsReferenceQuery,

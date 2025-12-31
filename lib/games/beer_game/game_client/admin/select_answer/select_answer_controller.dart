@@ -9,8 +9,8 @@ class SelectAnswerController extends ChangeNotifier{
   String _selectedAnswer = '';
   String get selectedAnswer => _selectedAnswer;
 
-  bool _answeredToRound = false;
-  bool get answeredToRound => _answeredToRound;
+  int _lastRoundVoted = -1;
+  int get lastRoundVoted => _lastRoundVoted;
 
   int _timerToNextRound = 5;
   int get timerToNextRound => _timerToNextRound;
@@ -47,14 +47,15 @@ class SelectAnswerController extends ChangeNotifier{
   Future<void> saveSessionLocally() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('playerName', _playerName);
-    _playerName = prefs.getString('playerName') ?? '';
     await prefs.setBool('playerReady', _playerReady);
+    await prefs.setInt('lastVotedRound', _lastRoundVoted);
   }
 
   Future<void> getSessionLocally() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     
     _playerName = prefs.getString('playerName') ?? '';
+    _lastRoundVoted = prefs.getInt('lastVotedRound') ?? -1;
     _playerReady = prefs.getBool('playerReady') ?? false;
     notifyListeners();
   }
@@ -65,8 +66,8 @@ class SelectAnswerController extends ChangeNotifier{
     notifyListeners();
   }
 
-  void setAnsweredToRound() {
-    _answeredToRound = true;
+  void setAnsweredToRound(int value) {
+    _lastRoundVoted = value;
     notifyListeners();
   }
 
@@ -101,7 +102,6 @@ class SelectAnswerController extends ChangeNotifier{
 
   void resetController() {
     _selectedAnswer = '';
-    _answeredToRound = false;
     _timerToNextRound = 5;
     _timerVisible = false;
     notifyListeners();

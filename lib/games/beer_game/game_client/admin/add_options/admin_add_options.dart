@@ -38,7 +38,7 @@ class _AdminAddOptionsPageState extends State<AdminAddOptionsPage> {
 
         controller.setAfterTimerFunction(
           () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: 1, playerName: "Nem",)));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: 1, playerName: "Nem",)));
           }
         );
         controller.startTimerToNextRound();

@@ -20,7 +20,7 @@ class RoundPage extends StatelessWidget {
         controller.addRound();
         controller.setAfterTimerFunction(
           () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPage(roundNumber: map['roundnum'])));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPage(roundNumber: map['roundnum'])));
           }
         );
         controller.startTimerToNextRound();
@@ -31,7 +31,7 @@ class RoundPage extends StatelessWidget {
           controller.setAfterTimerFunction(
             () {
               controller.generateGameResults();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => GameOverBasePage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => GameOverBasePage()));
             }
           );
           controller.startTimerToNextRound();

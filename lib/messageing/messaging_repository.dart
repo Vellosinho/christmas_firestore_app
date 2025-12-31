@@ -73,7 +73,7 @@ class MessagingRepository {
   void cleanGame() {
     cleanEvents();
     cleanRounds();
-    cleanPlayers();
+    // cleanPlayers();
     cleanAdmins();
   }
   void cleanEvents() {

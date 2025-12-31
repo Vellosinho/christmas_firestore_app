@@ -1,14 +1,12 @@
 import 'package:christmas_firestore_app/consts/color_palette.dart';
 import 'package:christmas_firestore_app/consts/text_consts.dart';
 import 'package:christmas_firestore_app/games/beer_game/game_client/admin/add_options/admin_add_options.dart';
-import 'package:christmas_firestore_app/games/beer_game/game_client/admin/game_over/game_over_page.dart';
 import 'package:christmas_firestore_app/games/beer_game/game_client/admin/select_answer/select_answer.dart';
 import 'package:christmas_firestore_app/games/beer_game/game_client/admin/select_answer/select_answer_controller.dart';
 import 'package:christmas_firestore_app/messageing/messaging_repository.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class PhonePage extends StatefulWidget {
   const PhonePage({super.key});
@@ -62,7 +60,7 @@ class _PhonePageState extends State<PhonePage> {
 
         controller.setAfterTimerFunction(
           () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: map['roundnum'], playerName: controller.playerName,)));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: map['roundnum'], playerName: controller.playerName,)));
           }
         );
         controller.startTimerToNextRound();
@@ -108,9 +106,9 @@ class _PhonePageState extends State<PhonePage> {
                             MessagingRepository().addUser(controller.playerName, []);
                             if(controller.isNem) {
                               FocusScope.of(context).unfocus();
-                              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => AdminAddOptionsPage()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => AdminAddOptionsPage()));
                             } else {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: 1, playerName: name,)));
+                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPageSelectAnswer(roundNumber: 1, playerName: name,)));
                             }
                           }
                           // MessagingRepository().cleanGame();

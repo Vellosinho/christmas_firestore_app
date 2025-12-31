@@ -44,6 +44,12 @@ abstract class TextStyles {
     color: Colors.white,
     height: 1,
   );
+  static const TextStyle playerNameBlack = TextStyle(
+    fontFamily: 'PoorStory',
+    fontSize: 64,
+    color: Colors.black,
+    height: 1,
+  );
 
   static const TextStyle commonText = TextStyle(
     fontFamily: 'PoorStory',

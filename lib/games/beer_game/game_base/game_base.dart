@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:christmas_firestore_app/consts/color_palette.dart';
 import 'package:christmas_firestore_app/consts/text_consts.dart';
 import 'package:christmas_firestore_app/games/beer_game/game_base/game_base_controller.dart';
@@ -33,7 +35,7 @@ class _GameBaseState extends State<GameBase> {
         controller.addRound();
         controller.setAfterTimerFunction(
           () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => RoundPage(roundNumber: 1)));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RoundPage(roundNumber: 1)));
           }
         );
         controller.startTimerToNextRound();
@@ -113,17 +115,7 @@ class _GameBaseState extends State<GameBase> {
                           Map user = snapshot.value as Map;
                       
                           return (index < 5) ? UnconstrainedBox(
-                            child: SizedBox(
-                              height: 320,
-                              width: 320, 
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: PlayerColors.playerColorList[index],
-                                  borderRadius: const BorderRadius.all(Radius.circular(160))
-                                ),
-                                child: Center(child: Text(user['userName'], style: TextStyles.playerNameText))
-                              )
-                            ),
+                            child: PlayerIcon(index: index, player: user["userName"],)
                             
                           ) : SizedBox();
                         }
@@ -169,20 +161,7 @@ class _GameBaseState extends State<GameBase> {
                           Map user = snapshot.value as Map;
                       
                           return ((index >= 8) && (index < 10)) ? UnconstrainedBox(
-                            child: Padding(
-                              padding: EdgeInsets.only(top: (index == 8) ? 6: 0),
-                              child: SizedBox(
-                                height: 320,
-                                width: 320, 
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    color: PlayerColors.playerColorList[index],
-                                    borderRadius: const BorderRadius.all(Radius.circular(160))
-                                  ),
-                                  child: Center(child: Text(user['userName'], style: TextStyles.playerNameText))
-                                )
-                              ),
-                            ),
+                            child: PlayerIcon(index: index, player: user["userName"],)
                             
                           ) : SizedBox();
                         }
@@ -206,18 +185,43 @@ class PlayerIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Random rand = Random(index);
+    int paddingLeft = rand.nextInt(6) - 2;
+    int paddingTop = rand.nextInt(6) - 2;
+    int glassVariation = rand.nextInt(2) + 1;
     return Consumer<GameBaseController>(
-      builder: (context, controller, _) => SizedBox(
-        height: 320,
-        width: 320, 
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: (player != '') ? PlayerColors.playerColorList[index] : Colors.transparent,
-            // color: Colors.red,
-            borderRadius: const BorderRadius.all(Radius.circular(160))
+      builder: (context, controller, _) => Stack(
+        children: [
+          SizedBox(
+            height: 320,
+            width: 320, 
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(color: Colors.black, blurRadius: 4),
+                ],
+                color: PlayerColors.playerColorList[index],
+                borderRadius: const BorderRadius.all(Radius.circular(160))
+              ),
+              child: SizedBox(
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(160)),
+                  child: Image.asset(
+                    fit: BoxFit.fill,
+                    'assets/beer_game/pattern_$index.png'), ),
+              ),
+            )
           ),
-          child: Center(child: Text(player, style: TextStyles.playerNameText))
-        )
+          Positioned(
+            top: (paddingTop * 10).toDouble(), left: (paddingLeft * 10).toDouble(),
+            child: Stack(
+              children: [
+                Image.asset('assets/beer_game/copo_$glassVariation.png', height: 302, width: 302,),
+                SizedBox(height: 302, width: 302, child: Center(child: Text(player, style: TextStyles.playerNameBlack)))
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
