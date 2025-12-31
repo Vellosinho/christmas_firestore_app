@@ -1,18 +1,21 @@
-2025/12/31-14:33:58.526 1720 Reusing MANIFEST C:\Users\Lucas\AppData\Local\Temp\flutter_tools.8614fba8\flutter_tools_chrome_device.d36fc738\Default\shared_proto_db/MANIFEST-000001
-2025/12/31-14:33:58.527 1720 Recovering log #26
-2025/12/31-14:33:58.529 1720 Reusing old log C:\Users\Lucas\AppData\Local\Temp\flutter_tools.8614fba8\flutter_tools_chrome_device.d36fc738\Default\shared_proto_db/000026.log 
-2025/12/31-14:33:58.530 1720 Delete type=0 #3
-2025/12/31-14:33:58.530 1720 Delete type=0 #4
-2025/12/31-14:33:58.530 1720 Delete type=0 #7
-2025/12/31-14:33:58.530 1720 Delete type=2 #8
-2025/12/31-14:33:58.530 1720 Delete type=0 #10
-2025/12/31-14:33:58.530 1720 Delete type=2 #11
-2025/12/31-14:33:58.530 1720 Delete type=0 #13
-2025/12/31-14:33:58.530 1720 Delete type=2 #14
-2025/12/31-14:33:58.531 1720 Delete type=0 #16
-2025/12/31-14:33:58.531 1720 Delete type=2 #17
-2025/12/31-14:33:58.531 1720 Delete type=0 #19
-2025/12/31-14:33:58.531 1720 Delete type=0 #23
-2025/12/31-14:34:24.414 27c0 Level-0 table #30: started
-2025/12/31-14:34:24.432 27c0 Level-0 table #30: 135923 bytes OK
-2025/12/31-14:34:24.436 27c0 Delete type=0 #26
+2025/12/31-20:45:44.670 321c Reusing MANIFEST C:\Users\Lucas\AppData\Local\Temp\flutter_tools.14610b81\flutter_tools_chrome_device.f9976bbc\Default\shared_proto_db/MANIFEST-000001
+2025/12/31-20:45:44.671 321c Recovering log #32
+2025/12/31-20:45:44.673 321c Reusing old log C:\Users\Lucas\AppData\Local\Temp\flutter_tools.14610b81\flutter_tools_chrome_device.f9976bbc\Default\shared_proto_db/000032.log 
+2025/12/31-20:45:44.673 321c Delete type=0 #3
+2025/12/31-20:45:44.673 321c Delete type=0 #4
+2025/12/31-20:45:44.674 321c Delete type=0 #7
+2025/12/31-20:45:44.674 321c Delete type=2 #8
+2025/12/31-20:45:44.674 321c Delete type=0 #10
+2025/12/31-20:45:44.674 321c Delete type=2 #11
+2025/12/31-20:45:44.674 321c Delete type=0 #13
+2025/12/31-20:45:44.674 321c Delete type=2 #14
+2025/12/31-20:45:44.674 321c Delete type=0 #16
+2025/12/31-20:45:44.675 321c Delete type=2 #17
+2025/12/31-20:45:44.675 321c Delete type=0 #19
+2025/12/31-20:45:44.675 321c Delete type=2 #21
+2025/12/31-20:45:44.675 321c Delete type=0 #23
+2025/12/31-20:45:44.675 321c Delete type=2 #24
+2025/12/31-20:45:44.675 321c Delete type=0 #26
+2025/12/31-20:45:44.675 321c Delete type=2 #27
+2025/12/31-20:45:44.675 321c Delete type=0 #29
+2025/12/31-20:45:44.675 321c Delete type=2 #30

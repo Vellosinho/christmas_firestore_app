@@ -133,17 +133,7 @@ class _GameBaseState extends State<GameBase> {
                           Map user = snapshot.value as Map;
                       
                           return ((index >= 5) && (index < 8)) ? UnconstrainedBox(
-                            child: SizedBox(
-                              height: 320,
-                              width: 320, 
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: PlayerColors.playerColorList[index],
-                                  borderRadius: const BorderRadius.all(Radius.circular(160))
-                                ),
-                                child: Center(child: Text(user['userName'], style: TextStyles.playerNameText))
-                              )
-                            ),
+                            child: PlayerIcon(index: index, player: user["userName"],)
                             
                           ) : SizedBox();
                         }
