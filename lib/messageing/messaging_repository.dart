@@ -73,6 +73,7 @@ class MessagingRepository {
   void cleanGame() {
     cleanEvents();
     cleanRounds();
+    cleanOptions();
     cleanPlayers();
     cleanAdmins();
   }
@@ -81,6 +82,9 @@ class MessagingRepository {
   }
   void cleanRounds() {
     _databaseRoundsReference.set({});
+  }
+  void cleanOptions() {
+    _databaseOptionsReference.set({});
   }
   void cleanPlayers() {
     _databasePlayerReference.set({});
